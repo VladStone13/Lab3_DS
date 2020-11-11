@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: transfer-market-service
+  name: transfer-market-service
+spec:
+  ports:
+  - name: 81-8081
+    port: 81
+    protocol: TCP
+    targetPort: 8081
+  selector:
+    app: transfer-market-service
+  type: ClusterIP

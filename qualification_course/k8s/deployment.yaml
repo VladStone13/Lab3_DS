@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: qualification-course-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gs-spring-boot-k8s
+  template:
+    metadata:
+      labels:
+        app: qualification-course-service
+    spec:
+      containers:
+      - image: qualification-course-service:snapshot
+        name: qualification-course-service
+      env:
+        - name: POSTGRES_ENDPOINT
+          value: "jdbc:postgresql://172.17.0.2:5432/"
+        - name: POSTGRES_PASSWORD
+          value: "13102001"
+        - name: POSTGRES_USERNAME
+          value: "postgres"
+
