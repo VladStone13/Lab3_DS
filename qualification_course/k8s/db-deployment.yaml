@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-qcs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db-qcs
+  template:
+    metadata:
+      labels:
+        app: db-qcs
+    spec:
+      containers:
+        - env:
+            - name: POSTGRES_DB
+              value: qcs
+            - name: POSTGRES_PASSWORD
+              value: "13102001"
+            - name: POSTGRES_USER
+              value: postgres
+          image: postgres
+          imagePullPolicy: IfNotPresent
+          name: db-qcs
+          ports:
+            - containerPort: 5432

@@ -1,6 +1,6 @@
-package com.example.qualification_course.models.models.DTO;
+package com.example.qualification_course.models.DTO;
 
-import com.example.qualification_course.models.models.FootballPlayer;
+import com.example.qualification_course.models.FootballPlayer;
 
 import java.util.List;
 

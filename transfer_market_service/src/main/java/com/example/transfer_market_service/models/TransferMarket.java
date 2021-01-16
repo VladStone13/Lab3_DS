@@ -11,7 +11,7 @@ public class TransferMarket {
     @GeneratedValue
     private UUID id;
 
-    @OneToMany(targetEntity = FootballPlayer.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = FootballPlayer.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn
     private List<FootballPlayer> playersOnTransfer;
 

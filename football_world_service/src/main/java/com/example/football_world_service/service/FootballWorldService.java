@@ -23,7 +23,7 @@ public class FootballWorldService {
 
     @Transactional
     public void buyPlayer(UUID ftClubId) {
-        String URL = "http://localhost:8080";
+        String URL = "http://localhost:8001";
         HttpHeaders headers = new HttpHeaders();
         RestTemplate restTemplate = new RestTemplate();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -63,7 +63,7 @@ public class FootballWorldService {
 
     @Transactional
     public void sellPlayer(UUID ftClubId) {
-        String URL = "http://localhost:8081";
+        String URL = "http://localhost:8001";
         HttpHeaders headers = new HttpHeaders();
         RestTemplate restTemplate = new RestTemplate();
         headers.setContentType(MediaType.APPLICATION_JSON);

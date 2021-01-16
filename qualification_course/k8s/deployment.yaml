@@ -6,20 +6,12 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: gs-spring-boot-k8s
+      app: qualification-course-service
   template:
     metadata:
       labels:
         app: qualification-course-service
     spec:
       containers:
-      - image: qualification-course-service:snapshot
+      - image: vladstone13/qualification_course_service
         name: qualification-course-service
-      env:
-        - name: POSTGRES_ENDPOINT
-          value: "jdbc:postgresql://172.17.0.2:5432/"
-        - name: POSTGRES_PASSWORD
-          value: "13102001"
-        - name: POSTGRES_USERNAME
-          value: "postgres"
-

@@ -12,5 +12,4 @@ spec:
     targetPort: 8082
   selector:
     app: training-service
-  type: ClusterIP
 

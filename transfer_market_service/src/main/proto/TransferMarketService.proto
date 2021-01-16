@@ -1,0 +1,36 @@
+syntax = "proto3";
+option java_multiple_files=true;
+option java_generic_services = true;
+package com.services.grpc.server.transferMarket;
+import "google/protobuf/empty.proto";
+
+message FootballPlayerRequest {
+  string id =1;
+  string name=2;
+  int32 age=3;
+  int32 ratingScore=4;
+  string position=5;
+}
+
+message FootballPlayerResponse {
+  string id =1;
+  string name=2;
+  int32 age=3;
+  int32 ratingScore=4;
+  string position=5;
+}
+
+message TransferMarketResponse {
+  repeated FootballPlayerResponse transferMarket=1;
+}
+
+message TransferMarketRequest {
+  repeated FootballPlayerRequest transferMarket=1;
+}
+
+service TransferMarketService {
+  rpc fillTransferMarket(TransferMarketRequest) returns (google.protobuf.Empty);
+  rpc getTransferMarket(google.protobuf.Empty) returns (TransferMarketResponse);
+  rpc addPlayer(FootballPlayerRequest) returns (google.protobuf.Empty);
+  rpc deletePlayer(FootballPlayerRequest) returns (google.protobuf.Empty);
+}

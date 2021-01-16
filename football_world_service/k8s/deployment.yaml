@@ -13,12 +13,5 @@ spec:
         app: football-world-service
     spec:
       containers:
-      - image: football-world-service:snapshot
+      - image: vladstone13/football_world_service
         name: football-world-service
-    env:
-      - name: POSTGRES_ENDPOINT
-        value: "jdbc:postgresql://172.17.0.2:5432/"
-      - name: POSTGRES_PASSWORD
-        value: "13102001"
-      - name: POSTGRES_USERNAME
-        value: "postgres"

@@ -1,6 +1,8 @@
 package com.example.transfer_market_service.models;
 
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -13,7 +15,7 @@ public class FootballClub {
     @OneToOne(cascade = CascadeType.ALL)
     private Trainer trainer;
 
-    @OneToMany(targetEntity = FootballPlayer.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = FootballPlayer.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn
     private List<FootballPlayer> footballTeam;
 
@@ -31,8 +33,60 @@ public class FootballClub {
     }
 
     public FootballClub() {
-
     }
+
+    /*
+    public FootballClub(FootballClubResponse footballClubResponse) {
+        id = UUID.fromString(footballClubResponse.getId());
+        clubName = footballClubResponse.getClubName();
+        budget = footballClubResponse.getBudget();
+        List<FootballPlayerResponse> footballPlayerResponses = footballClubResponse.getFootballTeamList();
+
+        footballTeam = new ArrayList<>();
+
+        for(FootballPlayerResponse footballPlayerResponse:footballPlayerResponses) {
+            footballTeam.add(new FootballPlayer(footballPlayerResponse));
+        }
+
+        trainer = new Trainer(footballClubResponse.getTrainer());
+    }
+
+    public FootballClub(FootballClubRequest footballClubRequest) {
+        id = UUID.fromString(footballClubRequest.getId());
+        clubName = footballClubRequest.getClubName();
+        budget = footballClubRequest.getBudget();
+        List<FootballPlayerRequest> footballPlayerRequests = footballClubRequest.getFootballTeamList();
+
+        footballTeam = new ArrayList<>();
+
+        for(FootballPlayerRequest footballPlayerRequest:footballPlayerRequests) {
+            footballTeam.add(new FootballPlayer(footballPlayerRequest));
+        }
+
+        trainer = new Trainer(footballClubRequest.getTrainer());
+    }
+
+    public FootballClubRequest toRequest() {
+
+        List<FootballPlayerRequest> footballPlayerRequests = new ArrayList<>();
+        for(FootballPlayer footballPlayer:footballTeam) {
+            footballPlayerRequests.add(footballPlayer.toRequest());
+        }
+
+        return FootballClubRequest.newBuilder().setClubName(clubName).
+                setBudget(budget).setTrainer(trainer.toRequest()).addAllFootballTeam(footballPlayerRequests).build();
+    }
+
+    public FootballClubResponse toResponse() {
+
+        List<FootballPlayerResponse> footballPlayerResponses = new ArrayList<>();
+        for(FootballPlayer footballPlayer:footballTeam) {
+            footballPlayerResponses.add(footballPlayer.toResponse());
+        }
+
+        return FootballClubResponse.newBuilder().setClubName(clubName).
+                setBudget(budget).setTrainer(trainer.toResponse()).addAllFootballTeam(footballPlayerResponses).build();
+    }*/
 
     public void setScore(int score) {
         this.score = score;

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-ts
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db-ts
+  template:
+    metadata:
+      labels:
+        app: db-ts
+    spec:
+      containers:
+        - env:
+            - name: POSTGRES_DB
+              value: ts
+            - name: POSTGRES_PASSWORD
+              value: "13102001"
+            - name: POSTGRES_USER
+              value: postgres
+          image: postgres
+          imagePullPolicy: IfNotPresent
+          name: db-ts
+          ports:
+            - containerPort: 5432

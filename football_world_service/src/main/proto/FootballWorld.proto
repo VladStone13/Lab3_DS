@@ -1,0 +1,70 @@
+syntax = "proto3";
+option java_multiple_files=true;
+option java_generic_services = true;
+package com.services.grpc.server.footballWorld;
+import "google/protobuf/empty.proto";
+
+message FootballPlayerRequest {
+  string id =1;
+  string name=2;
+  int32 age=3;
+  int32 ratingScore=4;
+  string position=5;
+}
+
+message FootballPlayerResponse {
+  string id =1;
+  string name=2;
+  int32 age=3;
+  int32 ratingScore=4;
+  string position=5;
+}
+
+message TrainerRequest {
+  string id =1;
+  string name=2;
+  int32 skillLevel=3;
+}
+
+message TrainerResponse {
+  string id =1;
+  string name=2;
+  int32 skillLevel=3;
+}
+
+
+message FootballClubRequest {
+  string id =1;
+  repeated FootballPlayerRequest footballTeam=2;
+  string clubName=3;
+  int32 budget=4;
+  TrainerRequest trainer=5;
+}
+
+
+message FootballClubResponse {
+  string id =1;
+  repeated FootballPlayerResponse footballTeam=2;
+  string clubName=3;
+  int32 budget=4;
+  TrainerResponse trainer=5;
+}
+
+message IdRequest {
+  string request=1;
+}
+
+message StringResponse {
+  string answ =1;
+}
+
+service FootballWorldService {
+  rpc playRound(google.protobuf.Empty) returns (google.protobuf.Empty);
+  rpc buyPlayer(IdRequest) returns (FootballClubResponse);
+  rpc sellPlayer(IdRequest) returns (FootballClubResponse);
+  rpc createClub(FootballClubRequest) returns (google.protobuf.Empty);
+  rpc getTrainer(IdRequest) returns (TrainerResponse);
+  rpc getFootballClub(IdRequest) returns (FootballClubResponse);
+  rpc getResults(google.protobuf.Empty) returns (StringResponse);
+}
+

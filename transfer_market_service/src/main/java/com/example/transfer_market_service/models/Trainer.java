@@ -24,6 +24,8 @@ public class Trainer {
         this.skillLevel = skillLevel;
     }
 
+
+
     public UUID getId() {
         return id;
     }
@@ -34,6 +36,14 @@ public class Trainer {
 
     public int getSkillLevel() {
         return skillLevel;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setSkillLevel(int skillLevel) {

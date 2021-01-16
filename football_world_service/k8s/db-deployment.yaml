@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-fws
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db-fws
+  template:
+    metadata:
+      labels:
+        app: db-fws
+    spec:
+      containers:
+        - env:
+            - name: POSTGRES_DB
+              value: fws
+            - name: POSTGRES_PASSWORD
+              value: "13102001"
+            - name: POSTGRES_USER
+              value: postgres
+          image: postgres
+          imagePullPolicy: IfNotPresent
+          name: db-fws
+          ports:
+            - containerPort: 5432

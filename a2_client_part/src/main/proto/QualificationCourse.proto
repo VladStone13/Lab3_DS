@@ -1,0 +1,13 @@
+syntax = "proto3";
+option java_multiple_files=true;
+option java_generic_services = true;
+package com.services.grpc.server.qualificationCourse;
+import "google/protobuf/empty.proto";
+
+message IdRequest {
+string id =1;
+}
+
+service QualificationCourseService {
+  rpc levelUpTrainer(IdRequest) returns (google.protobuf.Empty);
+}
